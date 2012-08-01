@@ -44,3 +44,27 @@ $r3->get('/books', function() use ($db) {
         'application/json' => 'json_encode',
     )
 );
+
+$r3->get('/book/*', function($id) use ($db) {
+    $book = $db->books()->where('id', $id);
+    if ($data = $book->fetch()) {
+        return array(
+            'id' => $data['id'],
+            'title' => $data['title'],
+            'author' => $data['author'],
+            'summary' => $data['summary'],
+        );
+    } else {
+        return array(
+            'status' => false,
+            'message' => sprintf(
+                'Book ID %s does not exist',
+                $id
+            ),
+        );
+    }
+})->accept(
+    array(
+        'application/json' => 'json_encode',
+    )
+);
