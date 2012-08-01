@@ -1,8 +1,11 @@
 <?php
 require 'vendor/autoload.php';
 
-use Respect\Rest\Router;
+include 'vendor/notorm/notorm/NotORM.php';
+$dsn = 'sqlite:' . realpath('./data/db.sqlite');
+$db = new NotORM(new PDO($dsn));
 
+use Respect\Rest\Router;
 $r3 = new Router;
 
 $r3->get('/', function() {
@@ -24,3 +27,20 @@ $r3->get('/users/*/lists/*', function($user, $list) {
 $r3->get('/posts/*/*/*', function($year,$month=null,$day=null) {
     //list posts, month and day are optional
 });
+
+$r3->get('/books', function() use ($db) {
+    $books = array();
+    foreach ($db->books() as $book) {
+        $books[] = array(
+            'id' => $book['id'],
+            'title' => $book['title'],
+            'author' => $book['author'],
+            'summary' => $book['summary'],
+        );
+    }
+    return $books;
+})->accept(
+    array(
+        'application/json' => 'json_encode',
+    )
+);
