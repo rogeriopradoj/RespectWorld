@@ -84,3 +84,27 @@ $r3->post('/book', function() use ($db) {
         'application/json' => 'json_encode',
     )
 );
+
+$r3->put('/book/*', function($id) use ($db) {
+    $book = $db->books()->where('id', $id);
+    if ($book->fetch()) {
+        parse_str(file_get_contents('php://input'), $put);
+        $result = $book->update($put);
+        return array(
+            'status' => (bool)$result,
+            'message' => 'Book updated successfully'
+        );
+    } else {
+        return array(
+            'status' => false,
+            'message' => sprintf(
+                'Book id %s does not exist',
+                $id
+            ),
+        );
+    }
+})->accept(
+    array(
+        'application/json' => 'json_encode',
+    )
+);
