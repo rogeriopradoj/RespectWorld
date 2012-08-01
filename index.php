@@ -68,3 +68,19 @@ $r3->get('/book/*', function($id) use ($db) {
         'application/json' => 'json_encode',
     )
 );
+
+$r3->post('/book', function() use ($db) {
+    $book = array(
+        'title' => $_POST['title'],
+        'author' => $_POST['author'],
+        'summary' => $_POST['summary'],
+    );
+    $result = $db->books->insert($book);
+    return array(
+        'id' => $result['id'],
+    );
+})->accept(
+    array(
+        'application/json' => 'json_encode',
+    )
+);
