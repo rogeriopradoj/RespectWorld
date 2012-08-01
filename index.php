@@ -6,7 +6,7 @@ use Respect\Rest\Router;
 $r3 = new Router;
 
 $r3->get('/', function() {
-    return 'Hello World';
+    echo '<h1>Hello Respect World</h1>';
 });
 
 $r3->get('/hello', function() {
