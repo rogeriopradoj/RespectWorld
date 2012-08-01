@@ -1,0 +1,6 @@
+{
+    "require": {
+        "Respect/Rest": "dev-develop",
+        "notorm/notorm": "dev-master"
+    }
+}
