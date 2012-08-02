@@ -1,6 +1,11 @@
-#RespectWorld
+# RespectWorld
 
-##en
+## Navigation
+[en][] | [pt_BR][]
+
+## en
+[Top][]
+
 A simple project using Respect\Rest microframework to create a RESTful
 application.
 
@@ -13,7 +18,9 @@ Take a look at my [github page](https://github.com/rogeriopradoj) for
 others repos ending with [...]World, they probably are the cousin projects of
 this one.
 
-##pt_BR
+## pt_BR
+[Topo][]
+
 Um projeto simples usando o framework Respect\Rest para criar uma aplicação
 RESTful.
 
@@ -25,3 +32,8 @@ Minha ideia é construir o mesmo projeto usando vários frameworks.
 Dê uma olhada na minha [página do github](https://github.com/rogeriopradoj)
 em outros repositórios terminando com [...]World, eles são provavelmente os
 projetos primos desse aqui.
+
+[Top]: #navigation
+[Topo]: #navigation
+[en]: #en
+[pt_BR]: #pt_br
